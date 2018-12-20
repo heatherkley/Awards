@@ -18,8 +18,8 @@ base_url = 'https://www.theamas.com/winners-database/?winnerKeyword=&winnerYear=
 
 driver.get(base_url)
 
-wait_award = WebDriverWait(driver, 10)       
 # DISMISS POPUPS
+wait_award = WebDriverWait(driver, 10)  
 wait_award.until(EC.presence_of_all_elements_located((By.XPATH,'//*[@id="onesignal-popover-cancel-button"]')))
 driver.find_element_by_xpath('//*[@id="onesignal-popover-cancel-button"]').click()
 
@@ -35,7 +35,7 @@ for year in range(1974, 2018):
    # wait_award = WebDriverWait(driver, 10)       
 
     awards = wait_award.until(EC.presence_of_all_elements_located((By.XPATH,'//*[@id="resultsTable"]')))
-    rows = driver.find_elements_by_xpath('//*[@id="resultsTable"]/tbody/tr')
+    rows = driver.find_elements_by_xpath('//*[@id="resultsTable"]/tbody/tr')  # tbody = table body tr = table row 
 
     for row in rows:
         Year = row.find_element_by_xpath('./td[1]/text()').text    # Use relative xpath to locate Year, Category, Winners.
